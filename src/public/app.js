@@ -77,9 +77,9 @@ $('#btn-back').addEventListener('click', () => show('lobby'));
 // ---- Partita ----
 function enterGame(game) {
   current = game;
-  goban.setSize(game.board_size);
+  show('game');            // prima rendi visibile la sezione...
+  goban.setSize(game.board_size); // ...poi dimensiona il canvas (ora clientWidth > 0)
   goban.clearDead();
-  show('game');
   render(game);
 }
 

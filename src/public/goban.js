@@ -23,7 +23,9 @@ export class Goban {
   _resize() {
     const wrap = this.canvas.parentElement;
     const dpr = window.devicePixelRatio || 1;
-    const px = Math.min(wrap.clientWidth, 560);
+    // Fallback se il contenitore è (ancora) a larghezza 0 (es. sezione nascosta).
+    const avail = wrap.clientWidth || Math.min(window.innerWidth - 32, 560);
+    const px = Math.min(avail, 560);
     this.px = px;
     this.canvas.style.width = px + 'px';
     this.canvas.style.height = px + 'px';

@@ -48,6 +48,7 @@ Config: `/etc/cloudflared/config.yml` — Tunnel ID: `8521f89c-9038-474b-886b-71
 | `hre.tongatron.org` | `127.0.0.1:3500` | HRE |
 | `pillo.tongatron.org` | `localhost:3502` | pillo |
 | `memo.tongatron.org` | `127.0.0.1:3503` | memo |
+| `go.tongatron.org` | `localhost:3504` | play-go |
 
 ### Tunnel magazzino (`cloudflared-magazzino.service`)
 
@@ -75,6 +76,7 @@ Config: `~/.cloudflared/magazzino-config.yml` — Tunnel ID: `e1fea28b-808a-40d5
 | `3501` | `127.0.0.1` | `jobseeker.service` | jobseeker |
 | `3502` | `127.0.0.1` | `pillo.service` | pillo |
 | `3503` | `127.0.0.1` | `memo.service` | memo |
+| `3504` | `127.0.0.1` | `play-go.service` | play-go (impara/gioca a Go) |
 
 ---
 
@@ -240,6 +242,26 @@ Gioco indovina-chi online.
 
 ---
 
+### play-go
+
+- **Service:** `play-go.service`
+- **Working dir:** `/srv/apps/play-go`
+- **Git:** `https://github.com/tongatron/play-go.git` (pubblico, branch `main`)
+- **Avvio:** `/usr/bin/node /srv/apps/play-go/src/server.js`
+- **Bind:** `127.0.0.1:3504`
+- **Env file:** `/srv/apps/play-go/.env` (`COOKIE_SECRET`, `PORT=3504`, `GNUGO_BIN`, `MAX_CONCURRENT_AI`)
+- **Hostname pubblico:** `https://go.tongatron.org`
+- **Dipendenza di sistema:** `gnugo` (GNU Go 3.8, via `apt`) — avversario computer in GTP
+- **Storage:** SQLite in `data/play-go.db`
+- **systemd:** `MemoryMax=200M` (prudenza su Pi3)
+
+Sito per imparare e giocare a Go (Weiqi): gioco vs computer (GNU Go), didattica e
+multiplayer asincrono. Stack Node 20 + Express + SQLite, frontend PWA.
+
+Aggiornamento: `cd /srv/apps/play-go && git pull && npm ci --omit=dev && sudo systemctl restart play-go`
+
+---
+
 ### alcol-monitor (vecchio)
 
 - **Service:** `alcol-monitor.service`
@@ -335,7 +357,7 @@ sudo systemctl restart cloudflared.service
 
 ```bash
 # Stato tutti i servizi custom
-systemctl status raspi-chat raspi-admin magazzino nginx cloudflared pillo jobseeker liberia alcol-monitor memo hre indovina-chi
+systemctl status raspi-chat raspi-admin magazzino nginx cloudflared pillo jobseeker liberia alcol-monitor memo hre indovina-chi play-go
 
 # Log in tempo reale
 journalctl -u raspi-admin -f

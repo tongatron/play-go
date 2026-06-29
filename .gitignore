@@ -1,0 +1,18 @@
+# Dipendenze
+node_modules/
+
+# Segreti e ambiente
+.env
+.env.*
+!.env.example
+
+# Database SQLite (dati runtime)
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Log e temporanei
+*.log
+npm-debug.log*
+.DS_Store

@@ -1,0 +1,18 @@
+[Unit]
+Description=play-go — sito per imparare e giocare a Go
+After=network.target
+
+[Service]
+Type=simple
+User=giovanni
+WorkingDirectory=/srv/apps/play-go
+# Carica le variabili da .env (PORT, HOST, COOKIE_SECRET, ...)
+EnvironmentFile=/srv/apps/play-go/.env
+ExecStart=/usr/bin/node /srv/apps/play-go/src/server.js
+Restart=on-failure
+RestartSec=3
+# Limite RAM prudente sul Pi3 (~389MB liberi). Aggiustare se necessario.
+MemoryMax=200M
+
+[Install]
+WantedBy=multi-user.target

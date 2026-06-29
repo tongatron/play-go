@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>play-go — impara e gioca a Go</title>
+  <meta name="description" content="Impara e gioca a Go (Weiqi) contro il computer o altri giocatori." />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#1b1b1b" />
+  <link rel="stylesheet" href="/style.css" />
+  <script async src="https://tongatron.org/analytics.js"></script>
+</head>
+<body>
+  <header>
+    <h1>play-go</h1>
+    <nav id="nav" hidden>
+      <span id="who"></span>
+      <button id="btn-logout" class="link">esci</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Autenticazione -->
+    <section id="auth">
+      <div class="card">
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Accedi</button>
+          <button class="tab" data-tab="register">Registrati</button>
+        </div>
+        <form id="auth-form">
+          <label>Nome utente
+            <input name="username" autocomplete="username" required minlength="3" maxlength="20" />
+          </label>
+          <label>Password
+            <input name="password" type="password" autocomplete="current-password" required minlength="6" />
+          </label>
+          <p id="auth-note" class="note" hidden>
+            Solo nome e password: <strong>senza email non è possibile recuperare la password</strong>.
+          </p>
+          <p id="auth-error" class="error" role="alert"></p>
+          <button type="submit" id="auth-submit">Accedi</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Nuova partita -->
+    <section id="lobby" hidden>
+      <div class="card">
+        <h2>Gioca contro il computer</h2>
+        <div class="row">
+          <label>Scacchiera
+            <select id="opt-size"><option value="9">9×9</option><option value="13">13×13</option></select>
+          </label>
+          <label>Il tuo colore
+            <select id="opt-color"><option value="B">Nero (muovi prima)</option><option value="W">Bianco</option></select>
+          </label>
+          <label>Difficoltà
+            <select id="opt-level">
+              <option value="1">Principiante</option>
+              <option value="5">Facile</option>
+              <option value="10" selected>Media</option>
+            </select>
+          </label>
+        </div>
+        <button id="btn-new">Nuova partita</button>
+      </div>
+    </section>
+
+    <!-- Partita -->
+    <section id="game" hidden>
+      <div id="board-wrap"><canvas id="goban" aria-label="Goban"></canvas></div>
+      <div class="game-bar">
+        <span id="status" class="status"></span>
+        <div class="actions">
+          <button id="btn-pass">Passa</button>
+          <button id="btn-resign" class="danger">Abbandona</button>
+          <button id="btn-back" class="link">← nuova partita</button>
+        </div>
+      </div>
+      <div id="score-panel" hidden>
+        <p>Partita conclusa: marca le pietre morte cliccandole, poi conferma il punteggio.</p>
+        <button id="btn-score">Conferma punteggio</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

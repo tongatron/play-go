@@ -1,0 +1,12 @@
+{
+  "name": "play-go — impara e gioca a Go",
+  "short_name": "play-go",
+  "description": "Impara e gioca a Go (Weiqi) contro il computer o altri giocatori.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1b1b1b",
+  "theme_color": "#1b1b1b",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

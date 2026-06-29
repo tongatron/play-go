@@ -167,7 +167,7 @@ verificare il risultato per entrambi.
   mostrando di chi è il turno.
 - **FR-019**: Il sistema MUST notificare l'utente quando è il suo turno.
 - **FR-020**: Il sistema MUST gestire resa e definire lo stato di partita abbandonata
-  (timeout di inattività). [NEEDS CLARIFICATION: durata del timeout di abbandono]
+  dopo **14 giorni** di inattività del giocatore di turno.
 
 **Persistenza & deploy**
 - **FR-021**: Il sistema MUST persistere utenti, partite e progressi in SQLite.
@@ -199,8 +199,8 @@ verificare il risultato per entrambi.
   logout/login nel 100% dei casi.
 - **SC-005**: Due utenti completano una partita async fino al conteggio rispettando i
   turni, con risultato coerente mostrato a entrambi.
-- **SC-006**: L'app resta stabile (nessun crash del service) durante almeno N partite
-  vs computer simultanee. [NEEDS CLARIFICATION: numero di partite simultanee target]
+- **SC-006**: L'app resta stabile (nessun crash del service) durante almeno **3 partite
+  vs computer simultanee** sul Pi3.
 
 ## Assumptions
 

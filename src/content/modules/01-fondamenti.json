@@ -1,0 +1,29 @@
+{
+  "id": "01-fondamenti",
+  "order": 1,
+  "title": "I fondamenti: scacchiera, pietre e libertà",
+  "prerequisites": [],
+  "lesson": [
+    "Il Go si gioca su una griglia di linee. Le pietre si posano sulle **intersezioni** (gli incroci delle linee), non dentro i quadrati. Il Nero muove per primo, poi i due giocatori si alternano.",
+    "Ogni pietra (o gruppo di pietre collegate lungo le linee) possiede delle **libertà**: le intersezioni vuote immediatamente adiacenti. Una pietra al centro ha 4 libertà; sul bordo ne ha 3; in un angolo solo 2.",
+    "Quando un gruppo di pietre perde **tutte** le sue libertà, viene **catturato** e rimosso dalla scacchiera. Imparare a contare le libertà è il primo passo per giocare.",
+    "Nell'esercizio qui sotto, la pietra bianca ha una sola libertà rimasta. Tocca a te (Nero): gioca sull'ultima libertà per catturarla."
+  ],
+  "exercises": [
+    {
+      "id": "e1",
+      "prompt": "La pietra bianca ha 1 libertà: catturala.",
+      "size": 9,
+      "toMove": "B",
+      "setup": [
+        { "x": 2, "y": 2, "color": "W" },
+        { "x": 2, "y": 1, "color": "B" },
+        { "x": 1, "y": 2, "color": "B" },
+        { "x": 3, "y": 2, "color": "B" }
+      ],
+      "solution": [{ "x": 2, "y": 3 }],
+      "okText": "Esatto! Hai tolto l'ultima libertà e catturato la pietra bianca.",
+      "noText": "Non ancora. Cerca l'unica intersezione vuota adiacente alla pietra bianca."
+    }
+  ]
+}

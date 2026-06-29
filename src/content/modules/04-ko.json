@@ -1,0 +1,32 @@
+{
+  "id": "04-ko",
+  "order": 4,
+  "title": "La regola del ko",
+  "prerequisites": ["03-occhi"],
+  "lesson": [
+    "A volte una cattura crea una posizione in cui l'avversario potrebbe **ricatturare subito** una singola pietra, riportando la scacchiera esattamente com'era. Se fosse permesso, la partita non finirebbe mai.",
+    "La **regola del ko** lo vieta: non è consentito giocare una mossa che ricrea immediatamente la posizione precedente. Chi vuole ricatturare deve prima giocare **altrove** (una cosiddetta *minaccia di ko*); solo dopo che l'avversario ha risposto può tornare a riprendersi il ko.",
+    "Il ko è una delle parti più strategiche del Go: trasforma una singola pietra in una posta in gioco che coinvolge tutta la scacchiera.",
+    "Nell'esercizio, tocca al Nero: cattura la pietra bianca al centro della forma di ko."
+  ],
+  "exercises": [
+    {
+      "id": "e1",
+      "prompt": "Cattura la pietra bianca, creando un ko.",
+      "size": 9,
+      "toMove": "B",
+      "setup": [
+        { "x": 1, "y": 0, "color": "B" },
+        { "x": 0, "y": 1, "color": "B" },
+        { "x": 1, "y": 2, "color": "B" },
+        { "x": 2, "y": 0, "color": "W" },
+        { "x": 1, "y": 1, "color": "W" },
+        { "x": 3, "y": 1, "color": "W" },
+        { "x": 2, "y": 2, "color": "W" }
+      ],
+      "solution": [{ "x": 2, "y": 1 }],
+      "okText": "Esatto! Hai catturato in ko. Ora il Bianco non può ricatturare subito.",
+      "noText": "Trova l'unica libertà della pietra bianca isolata al centro della forma."
+    }
+  ]
+}

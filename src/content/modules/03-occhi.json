@@ -1,0 +1,32 @@
+{
+  "id": "03-occhi",
+  "order": 3,
+  "title": "Occhi: vita e morte",
+  "prerequisites": ["02-cattura"],
+  "lesson": [
+    "Un **occhio** è uno spazio vuoto completamente circondato dalle pietre di un solo colore. L'avversario non può giocare dentro un occhio, perché sarebbe una mossa suicida... a meno che con quella mossa non catturi il gruppo.",
+    "La regola d'oro della sopravvivenza: un gruppo con **due occhi separati è vivo** e non può mai essere catturato. L'avversario dovrebbe riempire entrambi gli occhi nello stesso momento, cosa impossibile.",
+    "Al contrario, un gruppo con **un solo occhio** (o nessuno) può morire: prima o poi l'avversario gli toglie tutte le libertà esterne e poi riempie l'ultimo spazio, catturandolo.",
+    "Nell'esercizio, un gruppo bianco è ridotto a una sola libertà interna. Tocca al Nero: gioca quel punto per catturare tutto il gruppo."
+  ],
+  "exercises": [
+    {
+      "id": "e1",
+      "prompt": "Il gruppo bianco ha un'unica libertà: catturalo.",
+      "size": 9,
+      "toMove": "B",
+      "setup": [
+        { "x": 4, "y": 4, "color": "W" },
+        { "x": 5, "y": 4, "color": "W" },
+        { "x": 3, "y": 4, "color": "B" },
+        { "x": 4, "y": 3, "color": "B" },
+        { "x": 5, "y": 3, "color": "B" },
+        { "x": 6, "y": 4, "color": "B" },
+        { "x": 5, "y": 5, "color": "B" }
+      ],
+      "solution": [{ "x": 4, "y": 5 }],
+      "okText": "Esatto! Senza due occhi, il gruppo non aveva scampo.",
+      "noText": "Cerca l'ultima intersezione vuota adiacente al gruppo bianco di due pietre."
+    }
+  ]
+}

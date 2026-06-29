@@ -1,0 +1,44 @@
+{
+  "id": "02-cattura",
+  "order": 2,
+  "title": "Atari e cattura",
+  "prerequisites": ["01-fondamenti"],
+  "lesson": [
+    "Quando un gruppo ha **una sola libertà**, si dice che è in **atari**: alla prossima mossa può essere catturato. Riconoscere l'atari è fondamentale, sia per catturare le pietre avversarie sia per salvare le proprie.",
+    "Per catturare, si gioca sull'ultima libertà del gruppo avversario. Attenzione: vale anche per i gruppi di più pietre collegate, che condividono le loro libertà.",
+    "Sul **bordo** e nell'**angolo** le pietre hanno meno libertà, quindi si catturano più facilmente: spingere l'avversario verso il bordo è una tecnica comune.",
+    "Risolvi i due problemi: in entrambi tocca al Nero, e c'è un gruppo bianco in atari da catturare."
+  ],
+  "exercises": [
+    {
+      "id": "e1",
+      "prompt": "Cattura la pietra bianca sul bordo.",
+      "size": 9,
+      "toMove": "B",
+      "setup": [
+        { "x": 0, "y": 3, "color": "W" },
+        { "x": 0, "y": 2, "color": "B" },
+        { "x": 0, "y": 4, "color": "B" }
+      ],
+      "solution": [{ "x": 1, "y": 3 }],
+      "okText": "Bene! Sul bordo bastano poche pietre per catturare.",
+      "noText": "La pietra bianca è sul bordo: quante libertà le restano? Gioca sull'ultima."
+    },
+    {
+      "id": "e2",
+      "prompt": "Cattura il gruppo bianco di due pietre.",
+      "size": 9,
+      "toMove": "B",
+      "setup": [
+        { "x": 4, "y": 0, "color": "W" },
+        { "x": 5, "y": 0, "color": "W" },
+        { "x": 3, "y": 0, "color": "B" },
+        { "x": 4, "y": 1, "color": "B" },
+        { "x": 5, "y": 1, "color": "B" }
+      ],
+      "solution": [{ "x": 6, "y": 0 }],
+      "okText": "Perfetto: due pietre collegate condividono le libertà e cadono insieme.",
+      "noText": "Le due pietre bianche formano un gruppo unico. Trova la loro ultima libertà comune."
+    }
+  ]
+}

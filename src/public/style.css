@@ -56,3 +56,25 @@ canvas { border-radius: 6px; touch-action: manipulation; max-width: 100%; }
 .actions { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .actions button { margin-top: 0; }
 #score-panel { margin-top: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; font-size: .9rem; }
+
+/* Didattica */
+.muted { color: var(--muted); font-size: .9rem; margin: .2rem 0 .6rem; }
+.learn-cta { margin-bottom: 1rem; }
+.learn-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.learn-head h2 { margin: .3rem 0; }
+.modules { list-style: none; padding: 0; margin: .6rem 0 0; }
+.module {
+  display: flex; align-items: center; gap: .7rem; padding: .85rem 1rem; margin-bottom: .5rem;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+}
+.module.locked { opacity: .5; cursor: not-allowed; }
+.module.done { border-color: #4a7a4a; }
+.module .badge { width: 1.4rem; text-align: center; }
+.module.done .badge { color: #6fcf6f; }
+.m-title { font-size: .98rem; }
+#lesson-text p { line-height: 1.5; }
+.ex-prompt { font-weight: 600; }
+#ex-board-wrap { width: 100%; display: flex; justify-content: center; }
+.ex-feedback { min-height: 1.3em; font-size: .92rem; margin: .5rem 0; }
+.ex-feedback.ok { color: #6fcf6f; }
+.ex-feedback.no { color: #e88; }

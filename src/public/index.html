@@ -45,6 +45,11 @@
 
     <!-- Nuova partita -->
     <section id="lobby" hidden>
+      <div class="card learn-cta">
+        <h2>Impara a giocare</h2>
+        <p class="muted">Lezioni ed esercizi interattivi, dal primo passo al ko.</p>
+        <button id="btn-learn">Apri il percorso didattico</button>
+      </div>
       <div class="card">
         <h2>Gioca contro il computer</h2>
         <div class="row">
@@ -80,6 +85,31 @@
       <div id="score-panel" hidden>
         <p>Partita conclusa: marca le pietre morte cliccandole, poi conferma il punteggio.</p>
         <button id="btn-score">Conferma punteggio</button>
+      </div>
+    </section>
+
+    <!-- Elenco moduli didattici -->
+    <section id="learn" hidden>
+      <div class="learn-head">
+        <h2>Percorso didattico</h2>
+        <button class="link" data-go="lobby">← indietro</button>
+      </div>
+      <ul id="module-list" class="modules"></ul>
+    </section>
+
+    <!-- Lezione + esercizi -->
+    <section id="lesson" hidden>
+      <div class="learn-head">
+        <h2 id="lesson-title"></h2>
+        <button class="link" data-go="learn">← moduli</button>
+      </div>
+      <div id="lesson-text"></div>
+      <div id="exercise" hidden>
+        <h3>Esercizio <span id="ex-num"></span></h3>
+        <p id="ex-prompt" class="ex-prompt"></p>
+        <div id="ex-board-wrap"><canvas id="ex-goban" aria-label="Esercizio"></canvas></div>
+        <p id="ex-feedback" class="ex-feedback" role="status"></p>
+        <button id="ex-retry" class="link" hidden>↻ riprova</button>
       </div>
     </section>
   </main>

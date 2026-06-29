@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { getDb } from './db/index.js';
 import { authRouter } from './routes/auth.js';
 import { gamesRouter } from './routes/games.js';
+import { learnRouter } from './routes/learn.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -26,6 +27,7 @@ export function createApp(db = getDb()) {
   app.get('/health', (_req, res) => res.json({ ok: true }));
   app.use('/api/auth', authRouter(db));
   app.use('/api/games', gamesRouter(db));
+  app.use('/api/modules', learnRouter(db));
 
   app.use(express.static(join(__dirname, 'public')));
 

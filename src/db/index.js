@@ -3,7 +3,7 @@
 // tracciato con PRAGMA user_version (numero progressivo).
 
 import Database from 'better-sqlite3';
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -15,6 +15,7 @@ let db;
 export function getDb() {
   if (db) return db;
   const file = process.env.DB_PATH || join(process.cwd(), 'data', 'play-go.db');
+  mkdirSync(dirname(file), { recursive: true }); // better-sqlite3 non crea la cartella
   db = new Database(file);
   db.pragma('journal_mode = WAL');
   db.pragma('foreign_keys = ON');

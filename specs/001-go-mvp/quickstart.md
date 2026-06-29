@@ -10,7 +10,8 @@ npm test                      # motore regole + validazione mosse + SGF (node:te
 npm run dev                   # http://localhost:3504
 ```
 
-GNU Go in locale (per testare l'avversario): `brew install gnugo` (macOS).
+GNU Go in locale (per testare l'avversario): `brew install gnu-go` (macOS — la
+formula si chiama `gnu-go` ma installa il binario `gnugo`). Su Raspbian è `apt install gnugo`.
 
 ## Deploy sul Raspberry Pi 3
 

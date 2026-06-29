@@ -93,6 +93,19 @@ function render(game) {
   $('#score-panel').hidden = game.status !== 'scoring';
   $('#btn-pass').disabled = game.status !== 'playing';
   $('#btn-resign').disabled = game.status !== 'playing';
+  maybeTriggerAi();
+}
+
+// Se è il turno del computer ma non ha (ancora) mosso — tipico dopo un timeout di
+// GNU Go — richiedi la mossa al server, con ritentativo finché non risponde.
+let aiInFlight = false;
+async function maybeTriggerAi() {
+  if (!current || current.status !== 'playing' || current.turn === myColor || aiInFlight) return;
+  aiInFlight = true;
+  const r = await api('POST', `/api/games/${current.id}/ai-move`);
+  aiInFlight = false;
+  if (r.status === 503) { flashStatus('Il computer ci sta pensando…'); setTimeout(maybeTriggerAi, 1500); return; }
+  if (r.ok) render(r.json.game);
 }
 
 function prettyResult(r) {

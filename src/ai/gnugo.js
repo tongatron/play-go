@@ -39,7 +39,7 @@ export class AiUnavailable extends Error {
  * @param {string} [p.bin='gnugo']
  * @returns {Promise<{kind:'play'|'pass'|'resign', x?:number, y?:number}>}
  */
-export function genMove({ size, komi, moves = [], color, level = 10, timeoutMs = 8000, bin = 'gnugo' }) {
+export function genMove({ size, komi, moves = [], color, level = 10, timeoutMs = 20000, bin = 'gnugo' }) {
   return new Promise((resolve, reject) => {
     let child;
     try {

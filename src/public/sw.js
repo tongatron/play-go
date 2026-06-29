@@ -1,7 +1,7 @@
 // Service worker: strategia network-first per l'app shell (così gli aggiornamenti
 // si vedono subito quando si è online) con fallback alla cache offline.
 // Le chiamate /api/ passano sempre e solo dalla rete.
-const CACHE = 'play-go-v3';
+const CACHE = 'play-go-v4';
 const SHELL = ['/', '/index.html', '/style.css', '/app.js', '/goban.js', '/manifest.webmanifest', '/icon.svg'];
 
 self.addEventListener('install', (e) => {

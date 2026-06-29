@@ -133,6 +133,24 @@ export function gamesRouter(db) {
     }
   });
 
+  // Ri-richiesta della mossa AI (recupero quando genMove era fallito/in timeout
+  // e la partita è rimasta col turno al computer). Idempotente: agisce solo se è
+  // davvero il turno dell'AI in una partita vs_computer ancora in corso.
+  router.post('/:id/ai-move', async (req, res) => {
+    const row = getGame(req.params.id);
+    if (!canAccess(row, req.session.userId)) return res.status(404).json({ error: 'not_found' });
+    if (row.type !== 'vs_computer' || row.status !== 'playing') return res.status(409).json({ error: 'not_playing' });
+    const { turn } = stateOf({ size: row.board_size, sgf: row.sgf });
+    if (turn !== row.ai_color) return res.json({ game: gameView(row) }); // non è il turno dell'AI
+    try {
+      const updated = await aiRespond(db, row);
+      res.json({ game: gameView(updated) });
+    } catch (e) {
+      if (e instanceof AiUnavailable) return res.status(503).json({ error: 'ai_unavailable', message: e.message, game: gameView(row) });
+      throw e;
+    }
+  });
+
   // Resa
   router.post('/:id/resign', (req, res) => {
     const row = getGame(req.params.id);
